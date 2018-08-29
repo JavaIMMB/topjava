@@ -16,6 +16,17 @@ CREATE TABLE users
 );
 CREATE UNIQUE INDEX users_unique_email_idx ON users (email);
 
+CREATE TABLE meals
+(
+  id INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+  user_id INTEGER NOT NULL,
+  datetime TIMESTAMP,
+  description TEXT,
+  calories INT,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+
+);
+
 CREATE TABLE user_roles
 (
   user_id INTEGER NOT NULL,
