@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.repository;
 
+import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.model.Meal;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,9 @@ public interface MealRepository {
 
     // false if meal do not belong to userId
     boolean delete(int id, int userId);
+
+    @Transactional
+    void deleteAll(int userId);
 
     // null if meal do not belong to userId
     Meal get(int id, int userId);
